@@ -1,0 +1,196 @@
+\documentclass[a4paper,10pt]{article}
+
+%% margins
+\usepackage[top=1.5in, bottom=1.5in, left=1.2in, right=1.2in]{geometry}
+
+%% default
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{eurosym}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{spreadtab}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{import}
+
+%% per posar urls
+\usepackage{url}
+
+%% per poder fer labels de subsubsections amb sssec
+\setcounter{secnumdepth}{3} 
+
+%% per dates amb th
+\usepackage[super]{nth}
+
+%% per espai entre paragrafs i no tallar paraules
+\setlength\parindent{0pt}
+\usepackage{parskip}
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+%% per canviar la font, quin es l'espai entre paragrafs (1,5) i per a que deixin de sortir coses
+%%   related amb la font de no se que que no te (els punts de les llistes crec)
+\usepackage[defaultsans]{droidsans}
+\renewcommand*\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+\renewcommand{\baselinestretch}{1.5}
+\usepackage{textcomp}
+
+%% per fer multirow
+\usepackage{multirow}
+
+%% Tema fancy header, num de pagina i tal
+\usepackage[lastpage,user]{zref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\small{Project management (GEP) - Final deliverable}}
+\lhead{\includegraphics[height=0.7cm,width=5cm]{logoupcfib.png}}
+\cfoot{Page \thepage\ of \zpageref{LastPage}}
+\setlength\headheight{25pt}
+\setlength{\headsep}{30pt}
+
+\begin{document}
+\pagenumbering{gobble}
+
+{\parskip=0pt
+\title{\vspace{30mm}\textbf{\Large Lightweight Censorship Analyser for Tor}} 
+\author{Lucia Di Marco}
+\date{\small{\today}}
+\maketitle
+
+\vspace{5mm}
+\begin{center}
+\centering
+\textsc{GEP: Final deliverable}
+\vspace{5mm}
+
+\textnormal{\small{GEP Tutor: Ferran Sabaté 
+ \\ TFG Director: Jordi Delgado 
+ \\ Specialization: Information Technologies (IT)}}
+\end{center}
+}
+\newpage
+\pagenumbering{arabic} 
+\tableofcontents
+\newpage
+
+\import{intro/}{introcontextmain.tex}
+
+\pagebreak
+\import{time/}{schedmain.tex}
+
+\pagebreak
+\import{budget/}{budgetandsustainabilitymain.tex}
+
+\cleardoublepage
+
+\phantomsection
+
+\addcontentsline{toc}{section}{References}
+
+\begin{thebibliography}{99}
+
+\bibitem{TorPaper}
+Winter, P. (2013). 
+\emph{Towards a Censorship Analyser for Tor}. 
+Karlstad University, Sweden. 
+Retrieved from \url{http://www.cs.kau.se/philwint/pdf/foci2013.pdf}
+
+\bibitem{TorWeb}
+The Tor Project. 
+Tor Project: Anonymity Online. 
+Retrieved April 6, 2016, from \url{https://www.torproject.org/}
+
+\bibitem{EffTor}
+Electronic Frontier Foundation (EFF). 
+What is a Tor Relay? | Tor Challenge. 
+Retrieved April 6, 2016, from \url{https://www.eff.org/torchallenge/what-is-tor.html}
+
+\bibitem{TorBlog}
+The Tor Project.
+censorship | The Tor Blog.
+Retrieved April 6, 2016, from \url{https://blog.torproject.org/category/tags/censorship}
+
+\bibitem{HarvardCensor}
+Harvard University - Cyber Law.
+Internet Censorship and Control.
+Retrieved April 6, 2016, from \url{https://cyber.law.harvard.edu/pubrelease/internet-control/}
+
+\bibitem{ChinaPaper}
+Monggilo, Z. M. (2016).
+\emph{Internet Freedom in Asia: Case of Internet Censorship in China. Journal of Government and Politics, 7(1).}
+Retrieved from \url{http://journal.umy.ac.id/index.php/jsp/article/view/1174}
+
+\bibitem{HistoryCensor}
+Beacon for Freedom of Expression.
+The Long History of Censorship.
+Retrieved April 6, 2016, \url{from http://www.beaconforfreedom.org/liste.html?tid=415&art_id=475}
+
+\bibitem{FirstInternet}
+Elmer-Dewitt, P. (1993). 
+\emph{First Nation in Cyberspace.} 
+Retrieved from \url{http://www.chemie.fu-berlin.de/outerspace/internet-article.html}
+
+\bibitem{SyriaPaper}
+Chaabane, A., De Cristofaro, E., Terence Chen, T., Friedman, A., Cunche, M., \& Ali Kaafar, M. (2014).
+\emph{Censorship in the Wild: Analyzing Internet Filtering in Syria.}
+Retrieved from \url{http://arxiv.org/pdf/1402.3401v5.pdf}
+
+\bibitem{I2P}
+I2P Anonymous Network. 
+Retrieved April 6, 2016, from \url{https://geti2p.net/en/}
+
+\bibitem{Freenet}
+Freenet. 
+Retrieved April 6, 2016, from \url{https://freenetproject.org/}
+
+\bibitem{TorWebVol}
+The Tor Project. 
+Tor: Volunteer. 
+Retrieved April 6, 2016, from \url{https://www.torproject.org/getinvolved/volunteer}
+
+\bibitem{Obfsproxy}
+Flash Proxies. 
+Retrieved April 6, 2016, from \url{https://crypto.stanford.edu/flashproxy/}
+
+\bibitem{FlashProxy}
+The Tor Project. 
+Tor Project: obfsproxy. 
+Retrieved April 6, 2016, from \url{https://www.torproject.org/projects/obfsproxy.html.en}
+
+\bibitem{OoniProbe}
+OONI - OONI: Open Observatory of Network Interference. 
+Retrieved April 6, 2016, from \url{https://ooni.torproject.org/}
+ 
+\bibitem{GitOoni}
+Github.
+TheTorProject/ooni-probe. 
+Retrieved April 6, 2016, from \url{https://github.com/TheTorProject/ooni-probe}
+
+\bibitem{TorDevMail}
+Haven, J. H. (2014, May 2). [tor-dev] GSoC Project: A Lightweight Censorship Analyzer for Tor. 
+Retrieved from \url{https://lists.torproject.org/pipermail/tor-dev/2014-May/006808.html}
+
+\bibitem{OtherRepo}
+Github.
+edagar/censorship-analyser. 
+Retrieved April 6, 2016, from \url{https://github.com/edagar/censorship-analyser}
+
+\bibitem{ThisProjectGit}
+Github.
+alicenara/CAT. 
+Retrieved April 6, 2016, from \url{https://github.com/alicenara/CAT}
+
+\bibitem{Mockflow}
+MockFlow - Online Wireframe Tool and Design Cloud. 
+Retrieved April 6, 2016, from \url{https://www.mockflow.com/}
+
+\bibitem{PagePersonnel}
+Page Personnel. 
+Remuneration studies - Technology. 
+Retrieved April 6, 2016, from \url{http://www.pagepersonnel.es/sites/pagepersonnel.es/files/er_tecnologia16.pdf}
+
+\end{thebibliography}
+\end{document}

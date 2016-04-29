@@ -1,0 +1,53 @@
+\subsection{Relation about tasks, resources and dependences}
+\label{ssec:tasksAndResources}
+Now that we have introduced all tasks (\ref{ssec:tasks} Task description) and resources (\ref{ssec:resources} Resources), we can see its relation in table \ref{tab:relation}. \\
+
+
+\begin{table}[!htb]
+\centering
+  \begin{tabular}{| c | l | l | l | c |}
+  \hline Tasks & Section & Description & Hours & Specific resources \\ \hline \hline 
+  T1 & \ref{sssec:viability} & Viability study & 12 & No specific resources \\ \hline
+  T2 & \ref{sssec:projectManagement} & Project management & 89 &  No specific resources \\ \hline
+  T3 & \ref{sssec:design} & Project design & 15 & Mockup tool \\ \hline
+  T4 &   \ref{sssec:mainDev} & Development task & 306 &         \\ \hline \hline 
+  \small{T4S1} & \small{- Sprint 1} & \small{Scripts research} & \small{20} & \small{No specific resources}  \\ \hline
+  \small{T4S2} & \small{- Sprint 2} & \small{Security} & \small{35} &  \small{No specific resources}  \\ \hline 
+  \small{T4S3} & \small{- Sprint 3} & \small{Traffic analyser} & \small{69} & \small{\begin{tabular}{@{}c@{}}Development and \\testing tools\end{tabular}} \\ \hline 
+  \small{T4S4} & \small{- Sprint 4} & \small{Main features} & \small{84} & \small{\begin{tabular}{@{}c@{}}Development and \\testing tools\end{tabular}}  \\ \hline 
+  \small{T4S5} & \small{- Sprint 5} & \small{Sending reports} & \small{49} & \small{\begin{tabular}{@{}c@{}}Development and \\testing tools\end{tabular}}  \\ \hline  
+  \small{T4S6} & \small{- Sprint 6} & \small{OS Adapt} & \small{49} & \small{\begin{tabular}{@{}c@{}}Development and testing \\tools, virtual machines, \\Windows OS, Mac OSX\end{tabular}}  \\ \hline \hline 
+  T5 &   \ref{sssec:finalTask} & Final task & 35 &  No specific resources  \\ \hline 
+  T6 &   \ref{sssec:finalPresent} & Final presentation & 5 &  No specific resources  \\ \hline \hline
+  \textbf{Total} &  &  & 462 & \\ \hline 
+  \end{tabular}
+  \caption{Tasks and resources relations} \vspace{3pt}
+  \label{tab:relation}
+\end{table}
+
+Something very important to consider is that there are some resources that are common to all tasks, so they are not listed within the table. This resources are:
+\begin{itemize}
+\item A computer
+\item A Linux Operative System
+\item All tools to do the control version of this project
+\end{itemize}
+
+Also the total amount of hours we need to add the time spent on control meetings (3 hours per meeting and at least 3 meetings, 9 hours). So the total amount of hours this project need is \textbf{471 hours}.
+
+Finally, about this project dependences, as stated in each task description, on section \ref{ssec:tasks} of this document, there is indeed some dependences between tasks. This dependences can be represented as follows:
+
+\begin{description}
+\item For tasks, T3 will start at the same time T4, but all others must be finished before. This excludes the final presentation task of T2 as it will be only a preparing task to do the oral presentation but not a research or develop task.
+
+\begin{center} T1 < T2 (all except the Final Presentation task) < T3, T4 < T5 < T6 \end{center}
+
+\item For T4 sprint, although each sprint must be finished before starting the next one, we allow to start the next sprint while the final and not critical testing part of the last sprint is still being done. So, for all sprints that has development and testing part, their dependences are:
+
+\begin{center} Developing < Critical testing, Documentation < Testing \end{center}
+
+So the final representation is (Dev = Development, CT = Critical Testing):
+
+\begin{center} T4S1 < T4S2 < T4S3 (Dev < CT) < T4S4 (Dev < CT) < T4S5 (Dev < CT) < T4S6 (Dev < CT) \end{center}
+
+This dependences are graphically shown on Gantt chart on section \ref{ssec:gantt} and PERT diagram on section \ref{ssec:pert}.
+\end{description}

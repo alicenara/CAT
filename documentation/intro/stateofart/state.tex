@@ -1,0 +1,41 @@
+\subsection{Censorship on Internet}
+\label{ssec:censorshipInternet}
+This is a widely studied topic, as there are a lot of countries that have been using censorship for many years. Censorship problem has been repeatedly discussed in Tor Blog as can be appreciated in \cite{TorBlog}, and there is even a list of papers talking about censorship in one of the University of Harvard webpages \cite{HarvardCensor}.
+
+As we can see in this really recent paper \emph{"Internet Freedom in Asia: Case of Internet Censorship in China"} \cite{ChinaPaper}, even if China is the most remarkable case of censorship, there are other countries like Russia that applies more or less the same rules as China, or cases like Iran that has their own and isolated Internet. This paper also analyse how China government censors Internet to people over the years.
+
+But all that information is really not surprising if we check censorship history. As this blog shows us \cite{HistoryCensor}, long before Internet was created, censorship also existed in press, books and in the postal service (all of this still exists), among others. 
+
+In this paper from 1993, \emph{"First Nation in Cyberspace"} \cite{FirstInternet}, we can also see that even in early Internet there were few failed attempts to apply censorship, so as it got more popular among citizen, it is expected to found some countries censoring Internet contents. It is also possible that other countries not listed in the first paper are nowadays exerting some control in their country traffic, despite not being clearly noticeable.
+
+\subsection{General tools to beat censorship}
+\label{ssec:toolsBeatCensor}
+Although there are lots of places that censors Internet, there are also a lot of people doing their best to avoid it so to obtain freedom on Internet. 
+
+In the paper \emph{"Censorship in the Wild: Analyzing Internet Filtering in Syria"} \cite{SyriaPaper}, we can see a minutely study of the techniques used in Syria on 2014 to censor Internet, and some tools to avoid this censorship. 
+
+\pagebreak
+Authors explain that even if some censorship analysis can be done in other countries (they did as prior work), this paper is more complete because they could examine a leak of logs of censoring proxies operating in Syria.
+ 
+After an introduction, in sections 4 to 6 we can see statistics of types of censorship, explanations, comparisons, categories, lists, etc. Finally, in section 7, they suggest some technologies to avoid this practices. They talk about Tor (previously introduced in section \ref{sssec:tor}), along with other ways listed below:
+\begin{itemize}
+\item Web proxies and Virtual Private Networks (VPNs): they provide an encrypted tunnel to redirect all traffic through non censored networks on other countries. The paper explains that only the less know services of proxies and VPNs are not blocked, so people is still able to use them.
+\item Peer-to-peer networks: as they are distributed, they are easily accessed and difficult to block, but their usefulness is limited: they are mostly used to download programs that help people to circumvent censorship.
+\item Google cache: even if webpages are blocked, sometimes what Google has on cache of this webpage is not, so there were a lot of requests to cached pages.
+\end{itemize}
+
+\subsection{Privacy and freedom: volunteer's projects}
+As well as Tor (section \ref{sssec:tor}) is a project to give users more privacy when accessing the web, there are other projects built to provide the user with anonymity and privacy but not to access to Internet but to publish content inside their networks (deepweb).
+
+As this projects do not access to regular Internet, they are usually not blocked because what censors see are peer-to-peer connections.
+
+\begin{description}
+\item \textbf{The Invisible Internet Project (I2P)} \cite{I2P}, is an anonymous peer-to-peer network that provides with a simple layer that allows applications to anonymously and securely send messages to each other. All communications are encrypted and even the webpages inside this network have cryptographic identifiers.
+
+All webpages (blogs, torrents, mail service, markets, ...) are hosted in each website author computer, so when accessing to them they might be down if the computer is off. But also is a good and active community to share information.
+
+\pagebreak
+\item \textbf{Freenet} \cite{Freenet}, is also a project like I2P but its main difference is that uses a content distributed network, which means that once a content (like a webpage) is accessed, it is stored on each user's computer in order to allow this content to be available even if its author's computer is off.
+
+Also its design support users to connect only to trusted other users (friends) to be sure that any information is leaked. 
+\end{description}

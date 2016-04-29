@@ -1,0 +1,28 @@
+\subsection{Context}
+This project starts assuming two basic concepts: firstly, that Tor is a network that guarantees freedom inside Internet hiding user's location and encrypting all communications, and because of this some countries block its access. The other one is that not every country censors Tor in the same way, and there is a need to study about this countries and how censorship works.
+
+\subsubsection{Tor - The Onion Routing Project}
+\label{sssec:tor}
+Tor \cite{TorWeb, EffTor}, that stands for The Onion Routing, is a project built by volunteers that allows people to improve their privacy and security on the Internet. This is achieved by having each user connected through the Tor network: each connection goes by different tunnels with a minimum of three steps (to make it untraceable) before connecting to its destination (websites, game servers,...).
+
+This network contains two types of machines: 
+\begin{itemize}
+\item Relays: they are also referred as "routers" or "nodes". They receive traffic on the Tor network and redirect it. There are two types of relays: \underline{middle relays} and \underline{exit relays}.
+ 
+When connecting to a website using Tor, all traffic passes through, at least, three relays before arriving to its final destination. All relays, except the last one, will be middle relays (at least two), which are the ones that add speed and robustness to Tor network as they hide the origin and the destination of the traffic.  
+
+The last relay that a connection will go through, before reaching its destination, is an exit relay, hence the destination will only know that this connection has, as a source IP, an exit relay, but will not know anything else unless the user voluntarily provides more information about him or herself.
+
+Both types of relays advertise their presence to the rest of the Tor network, so any Tor user can connect to them; and also exit relays IPs are openly announced.
+
+\item Bridges: this ones are Tor relays that are not publicly listed as part of the Tor network as they are key elements to avoid censorship. They can be used only as entry points to the network, and then step to a middle relay to continue with the routing.
+\end{itemize}
+
+\subsubsection{Censorship on Tor}
+There are some countries that do not want people from the outside to know what is happening inside (human rights violation, dictatorships, etc.), or they just want to control its population to avoid public social problems and riots. 
+
+Whatever their reason is, they tend to blocks websites, proxies or Virtual Private Networks as these are elements that hinder traffic scanning. And a service that is often censored is Tor: some block its website so people can not download it, some censor the Directory Authorities so neither relays nor bridges can be found, and finally some block directly its relays and bridges to prevent connections to the network. 
+
+Some of the countries that apply censorship are: China (Great Firewall of China), Iran, Syria, Ethiopia and United Arab Emirates.
+
+More information of this topic can be found in section \ref{ssec:censorshipInternet} of this document.

@@ -1,0 +1,75 @@
+\subsubsection{Human resources}
+\label{sssec:humanResources}
+In this subsection we will define all positions needed to develop this software, in addition to the Tor volunteers who will also test it all. 
+
+All costs are calculated by the "Remuneration study" done by PagePersonnel \cite{PagePersonnel}. We get the maximum amount per year for each junior profile, add a 30\% for taxes and divide this amount to get the total hour price, rounded up. We will assume each month has 22 working days and each day has 8 working hours.
+
+Table \ref{tab:human} lists all roles and how much they participate in the project.
+
+Each different role will have different duties, that are related with the scheduling planning tasks:
+
+\begin{itemize}
+\item The project manager will do the scheduling of the project, its specification, will define its budget and do all general documentation. Planning tasks: Viability of the project (1), Project scheming (2), Final set up (5).
+\item The software designer will do the mockup of the project. Planning task: Project design (3).
+\item The software developer will code all the project. Planning tasks: Main development task (4), first and second sprint and all development parts of each sprint.
+\item The software tester will do all testing parts of the project. Planning tasks: All testing and critical testing parts of each sprint on the Main development task (4).
+\item And finally, all Tor volunteers will help testing the project too, but they will not have neither responsibilities nor hours assigned.
+\end{itemize}
+
+\begin{table}[!htb]
+\centering
+  \begin{tabular}{| c | c | c | c | c |}
+  \hline Tasks & Description & Hours task & Roles & Hours role \\ \hline \hline 
+  T1 & Viability study & 12 & Project manager & 12 \\ \hline
+  T2 & Project management & 89 &  Project manager & 89 \\ \hline
+  T3 & Project design & 15 &  Software designer & 15  \\ \hline
+  T4 & Development task & 306 &  &  \\ \hline \hline 
+  \small{T4S1} & \small{Scripts research} & \small{20} & \small{Software developer} & \small{20}  \\ \hline
+  \small{T4S2} & \small{Security} & \small{35} & \small{Software developer} & \small{35}  \\ \hline 
+  \multirow{4}{*}{\small{T4S3}} & \multirow{4}{*}{\small{Traffic analyser}} & \multirow{4}{*}{\small{69}} & \small{Project manager} & \small{2} 
+  \\ \cline{4-5} & & & \small{Software developer} & \small{49}  
+  \\ \cline{4-5} & & & \small{Software tester} & \small{18}
+  \\ \cline{4-5} & & & \small{Volunteer tester} & \small{0}
+  \\ \hline 
+  \multirow{4}{*}{\small{T4S4}} & \multirow{4}{*}{\small{Main features}} & \multirow{4}{*}{\small{84}} & \small{Project manager} & \small{2} 
+  \\ \cline{4-5} & & & \small{Software developer} & \small{64}  
+  \\ \cline{4-5} & & & \small{Software tester} & \small{18}
+  \\ \cline{4-5} & & & \small{Volunteer tester} & \small{0}
+  \\ \hline 
+  \multirow{4}{*}{\small{T4S5}} & \multirow{4}{*}{\small{Sending reports}} & \multirow{4}{*}{\small{49}} & \small{Project manager} & \small{2} 
+  \\ \cline{4-5} & & & \small{Software developer} & \small{29}  
+  \\ \cline{4-5} & & & \small{Software tester} & \small{18}
+  \\ \cline{4-5} & & & \small{Volunteer tester} & \small{0}
+  \\ \hline 
+  \multirow{4}{*}{\small{T4S6}} & \multirow{4}{*}{\small{OS Adapt}} & \multirow{4}{*}{\small{49}} & 
+  \small{Project manager} & \small{2} 
+  \\ \cline{4-5} & & & \small{Software developer} & \small{29}  
+  \\ \cline{4-5} & & & \small{Software tester} & \small{18}
+  \\ \cline{4-5} & & & \small{Volunteer tester} & \small{0}
+  \\ \hline  \hline 
+  \multirow{3}{*}{T5} & \multirow{3}{*}{Final task} & \multirow{3}{*}{35} & Project manager & 25  
+  \\ \cline{4-5} & & & Software tester & 10
+  \\ \cline{4-5} & & & Volunteer tester & 0
+  \\ \hline 
+  T6 & Final presentation & 5 &  Project manager & 5 \\ \hline\hline
+  \textbf{Total} &  & 462 & & \\ \hline 
+  \end{tabular}
+  \caption{Tasks and roles relations} \vspace{3pt}
+  \label{tab:taskRoles}
+\end{table}
+
+\begin{table}[!htb]
+\centering{
+  \begin{tabular}{| c | c | c | c |}
+  \hline Role & Total time (hours) & Price per hour & Final cost \\ \hline 
+  Project Manager & 139 & 25,00€ & 3475,00€        \\ \hline
+  Software designer & 15 & 17,00€ & 255,00€        \\ \hline
+  Software developer & 226 & 20,50€ & 4633,00€        \\ \hline
+  Software tester & 82 & 16,00€ & 1312,00€        \\ \hline
+  Volunteer testers & 0 & 0,00€ & 0,00€        \\ \hline \hline   
+  Total & 462  &  & 9675,00€  \\ \hline 
+  \end{tabular}
+  \caption{Human resources budget.} \vspace{3pt}
+  \label{tab:human}
+  }
+\end{table}
