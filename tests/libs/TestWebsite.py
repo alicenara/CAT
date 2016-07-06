@@ -10,14 +10,14 @@ class TestWebsite:
         self.headers = {
             'User-Agent': self.user_agent
         }
-        self.log = logging.getLogger('TestWebsite')
+        # self.log = logging.getLogger('TestWebsite')
         self.website = None
 
     def json_to_dict(self, json_string):
         try:
             new_dict = json.loads(json_string)
         except Exception as err:
-            self.log.error("Exception received while transforming json to dict: {}".format(err))
+            #self.log.error("Exception received while transforming json to dict: {}".format(err))
             return None
         return new_dict
 
@@ -27,14 +27,14 @@ class TestWebsite:
     def search_keywords_content(self, words):
         failed_words = []
         for w in words:
-            if w not in self.website.content:
+            if w not in self.website.text:
                 failed_words.append(w)
 
         if len(failed_words):
-            self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
+            # self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
             return False
         else:
-            self.log.info("All words found for website {}".format(self.website))
+            # self.log.info("All words found for website {}".format(self.website))
             return True
 
     def test_website(self, web_params):
@@ -51,7 +51,7 @@ class TestWebsite:
                 not_found_params.append(w)
 
         if len(not_found_params):
-            self.log.error("Parameters not found in website dict: {} (dict: {})".format(not_found_params, web_params))
+            #self.log.error("Parameters not found in website dict: {} (dict: {})".format(not_found_params, web_params))
             return False
         else:
             self.basic_get_req(web_params['url'])
