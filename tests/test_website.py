@@ -3,33 +3,34 @@ import logging
 import json
 import os
 
-INITIAL_DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)),'initial_data.txt')
-#log = logging.getLogger("test_website")
+INITIAL_DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "initial_data.txt")
+log = logging.getLogger("T_ProbeWebsite")
+
 
 def read_data():
-  with open(INITIAL_DATA,"r") as f:
-    web = f.read()
-   
-  try:
-    web = json.loads(web)
-  except Exception as err:
-    #log.error("Initial data malformed: {}".format(web))
-    print "Initial data malformed: {}".format(web)
-    return None
-  return web
+    with open(INITIAL_DATA, "r") as f:
+        web = f.read()
+
+    try:
+        web = json.loads(web)
+    except Exception as err:
+        log.error("Initial data malformed: data = {}, error = {}".format(web, err))
+        print "Initial data malformed: {}".format(web)
+        return None
+    return web
+
 
 def test_initial_data():
-  web = read_data()
-  test = TestWebsite()
-  if web is None or not 'web' in web:
-    #log.error("JSON is malformed, 'web' not found: {}".format(web))
-    print "lol not found {}".format(web)
-    return None
-  else:
+    web = read_data()
+    test = TestWebsite()
+    if web is None or not 'web' in web:
+        log.error("JSON is malformed, 'web' not found: {}".format(web))
+        return None
+
     for w in web['web']:
-      if test.test_website(w):
-	#log.info("url {} passed web test".format(w['url']))
-	print "url {} passed web test".format(w['url'])
-      else:
-	#log.info("url {} NOT passed web test".format(w['url']))
-	print "url {} NOT passed web test".format(w['url'])  
+        if test.test_website(w):
+            log.info("OK - URL {}".format(w['url']))
+            print "OK - URL {}".format(w['url'])
+        else:
+            log.info("FAILED - URL {}".format(w['url']))
+            print "FAILED - URL {}".format(w['url'])

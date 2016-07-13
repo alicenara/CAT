@@ -10,19 +10,31 @@ class TestWebsite:
         self.headers = {
             'User-Agent': self.user_agent
         }
-        # self.log = logging.getLogger('TestWebsite')
+        self.log = logging.getLogger('C_TestWebsite')
         self.website = None
 
     def json_to_dict(self, json_string):
         try:
             new_dict = json.loads(json_string)
         except Exception as err:
-            #self.log.error("Exception received while transforming json to dict: {}".format(err))
+            self.log.error("Exception received while transforming json to dict: {}".format(err))
             return None
         return new_dict
 
     def basic_get_req(self, url):
-        self.website = requests.get(url, headers=self.headers)
+        try:
+            self.website = requests.get(url, headers=self.headers)
+            if self.website.status_code in [200, 201, 202, 304]:
+                return
+            else:
+                self.log.error('Status code error: URL {} return an status code {}'.format(url, self.website.status_code))
+        except requests.exceptions.Timeout as terr:
+            self.log.error('Timeout error: URL {}, exception {})'.format(url, terr))
+        except requests.exceptions.TooManyRedirects as tmrerr:
+            self.log.error('TooManyRedirects error: URL {}, exception {}'.format(url, tmrerr))
+        except requests.exceptions.RequestException as gerr:
+            self.log.error('General exception: URL {}, exception {}'.format(url, gerr))
+        self.website = None
 
     def search_keywords_content(self, words):
         failed_words = []
@@ -31,10 +43,10 @@ class TestWebsite:
                 failed_words.append(w)
 
         if len(failed_words):
-            # self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
+            self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
             return False
         else:
-            # self.log.info("All words found for website {}".format(self.website))
+            self.log.info("All words found for website {}".format(self.website))
             return True
 
     def test_website(self, web_params):
@@ -51,7 +63,8 @@ class TestWebsite:
                 not_found_params.append(w)
 
         if len(not_found_params):
-            #self.log.error("Parameters not found in website dict: {} (dict: {})".format(not_found_params, web_params))
+            self.log.error("Some parameters not found in received arguments: "
+                           "missing parameters = {}, received parameters = {}".format(not_found_params, web_params))
             return False
         else:
             self.basic_get_req(web_params['url'])
