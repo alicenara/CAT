@@ -45,8 +45,8 @@ class TestWebsite:
         if len(failed_words):
             self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
             return False
-        else:
-            self.log.info("All words found for website {}".format(self.website))
+        else:https://www.amazon.es/Braun-Silk-%C3%A9pil-SkinSpa-9-969e-Depiladora/dp/B00R9HOIP0/ref=sr_1_7?m=A1AT7YVPFBWXBL&s=hpc&ie=UTF8&qid=1468790062&sr=1-7&keywords=depiladora
+            self.log.info("All words found for website {}".format(self.website.url))
             return True
 
     def test_website(self, web_params):
