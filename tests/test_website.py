@@ -7,9 +7,18 @@ INITIAL_DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), "initial
 log = logging.getLogger("T_ProbeWebsite")
 
 
+"""
+Read initial data from file
+"""
+
+
 def read_data():
     with open(INITIAL_DATA, "r") as f:
         web = f.read()
+
+    if web is None or web == "":
+        print "The file is empty"
+        return None
 
     try:
         web = json.loads(web)
@@ -20,10 +29,17 @@ def read_data():
     return web
 
 
+"""
+Do some tests
+"""
+
+
 def test_initial_data():
+
+    # Website testing
     web = read_data()
     test = TestWebsite()
-    if web is None or not 'web' in web:
+    if web is None or 'web' not in web:
         log.error("JSON is malformed, 'web' not found: {}".format(web))
         return None
 

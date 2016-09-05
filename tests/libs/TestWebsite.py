@@ -25,7 +25,7 @@ class TestWebsite:
         try:
             self.website = requests.get(url, headers=self.headers)
             if self.website.status_code in [200, 201, 202, 304]:
-                return
+                return True
             else:
                 self.log.error('Status code error: URL {} return an status code {}'.format(url, self.website.status_code))
         except requests.exceptions.Timeout as terr:
@@ -35,6 +35,7 @@ class TestWebsite:
         except requests.exceptions.RequestException as gerr:
             self.log.error('General exception: URL {}, exception {}'.format(url, gerr))
         self.website = None
+        return False
 
     def search_keywords_content(self, words):
         failed_words = []
@@ -45,8 +46,8 @@ class TestWebsite:
         if len(failed_words):
             self.log.warning("Failed words for website {}: {}".format(self.website.url, failed_words))
             return False
-        else:https://www.amazon.es/Braun-Silk-%C3%A9pil-SkinSpa-9-969e-Depiladora/dp/B00R9HOIP0/ref=sr_1_7?m=A1AT7YVPFBWXBL&s=hpc&ie=UTF8&qid=1468790062&sr=1-7&keywords=depiladora
-            self.log.info("All words found for website {}".format(self.website.url))
+        else:
+            self.log.debug("All words found for website {}".format(self.website.url))
             return True
 
     def test_website(self, web_params):
@@ -67,8 +68,10 @@ class TestWebsite:
                            "missing parameters = {}, received parameters = {}".format(not_found_params, web_params))
             return False
         else:
-            self.basic_get_req(web_params['url'])
-            return self.search_keywords_content(web_params['words'])
+            if self.basic_get_req(web_params['url']):
+                return self.search_keywords_content(web_params['words'])
+            else:
+                return False
 
 
 
