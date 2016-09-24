@@ -1,6 +1,20 @@
+from scapy.all import sr1, IP, DNS, DNSQR, DNSRR, UDP, ICMP
 import requests
 import logging
 import json
+
+
+"""
+What it should do:
+- Probe www.torproject.org:
+   x Try to download index page with HTTP GET with user agent legit.
+   x Check IP to detect DNS poisoning. <- same IP all countries?
+   x Try to reach other DNSs (like 8.8.8.8)
+- Probe tor mirrors (some without 'tor' in domain name)
+- Verify that port 443 of torproject is reachable
+- Probe also bridges (bridges.torproject.org)
+  
+"""
 
 
 class TestWebsite:
@@ -12,6 +26,9 @@ class TestWebsite:
         }
         self.log = logging.getLogger('C_TestWebsite')
         self.website = None
+        self.ip = None
+        self.url = None
+        self.original_ip = None
 
     def json_to_dict(self, json_string):
         try:
@@ -23,7 +40,8 @@ class TestWebsite:
 
     def basic_get_req(self, url):
         try:
-            self.website = requests.get(url, headers=self.headers)
+            self.website = requests.get(url, headers=self.headers, stream=True)
+            self.ip = self.website.raw._connection.sock.getpeername()[0]
             if self.website.status_code in [200, 201, 202, 304]:
                 return True
             else:
@@ -36,6 +54,23 @@ class TestWebsite:
             self.log.error('General exception: URL {}, exception {}'.format(url, gerr))
         self.website = None
         return False
+
+    def check_ip(self, url, original_ip, neutral_dns_ip = "8.8.8.8"):
+        if self.ip == original_ip:
+            self.log.info('IP is the same, DNS poisoning NOT detected (url: {})'.format(url))
+            return True
+        else:
+            self.log.warning('Different IP detected: {}'.format(self.ip))
+            dns_search = sr1(IP(dst=neutral_dns_ip) / UDP(dport=53) / DNS(rd=1, qd=DNSQR(qname=url)), verbose=0)
+            if dns_search[DNSRR].rrname == '.':
+                self.log.warning('URL ({}) not found in neutral DNS.'.format(url))
+
+            obtained_ip = dns_search[DNSRR].rdata
+            if original_ip == obtained_ip:
+                self.log.warning('Neutral DNS returns original IP - DNS poisoning detected for URL {}'.format(url))
+            elif self.ip == obtained_ip:
+                self.log.warning('Neutral DNS returns given IP - maybe original IP not correct for URL {}'.format(url))
+            return False
 
     def search_keywords_content(self, words):
         failed_words = []
