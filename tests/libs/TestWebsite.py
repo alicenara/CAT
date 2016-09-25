@@ -72,6 +72,9 @@ class TestWebsite:
             except OSError as oserr:
                 self.log.error('Error while trying to connect to DNS for URL {}: {}'. format(url, oserr))
                 return False
+            except Exception as exerr:
+                self.log.error('Unexpected error in DNS check, URL {}: {}'.format(url, exerr))
+                return False
 
             if dns_search is None or dns_search[DNSRR].rrname == '.':
                 self.log.warning('URL ({}) not found in neutral DNS.'.format(url))

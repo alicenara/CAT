@@ -1,4 +1,4 @@
-from tests.test_website import test_initial_data, read_data
+from tests.perform_tests import test_initial_data, read_data
 import logging.handlers
 import logging
 import json
